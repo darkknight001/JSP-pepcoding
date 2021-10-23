@@ -26,6 +26,7 @@ def testList(linkedlist):
     
     while temp!=None:
         print(temp.data)
+        temp = temp.next
     
     print(linkedlist.size)
     
@@ -35,17 +36,16 @@ def testList(linkedlist):
 # Driver Code
 
 def driver():
-    # Python bufferedInput implementation
     queries = []
     ll = LinkedList()
     
     # Getting input to buffer array
     while True:
-        try:
-            line = input()
-        except EOFError:
+        line = input()
+        if line and line!="quit":
+            queries.append(line)
+        else:
             break
-        queries.append(line)
     
     for q in queries:
         if q=="quit":
@@ -57,3 +57,4 @@ def driver():
     testList(ll)
     
 driver()
+    

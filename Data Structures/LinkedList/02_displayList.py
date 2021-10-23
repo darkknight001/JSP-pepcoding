@@ -20,40 +20,42 @@ class LinkedList:
             self.tail.next = newNode
             self.tail = self.tail.next
             self.size+=1
-
-def testList(linkedlist):
-    temp = linkedlist.head
     
-    while temp!=None:
-        print(temp.data)
-    
-    print(linkedlist.size)
-    
-    if linkedlist.size > 0:
-        print(linkedlist.tail.data)
+    def getSize(self):
+        return self.size
+        
+    def display(self):
+        temp = self.head
+        
+        while temp is not None:
+            print(temp.data, end=" ")
+            temp = temp.next
+        print()
 
 # Driver Code
 
 def driver():
-    # Python bufferedInput implementation
     queries = []
     ll = LinkedList()
     
     # Getting input to buffer array
     while True:
-        try:
-            line = input()
-        except EOFError:
+        line = input()
+        if line and line!="quit":
+            queries.append(line)
+        else:
             break
-        queries.append(line)
     
     for q in queries:
-        if q=="quit":
-            break
         if "addLast" in q:
             val = int(q.split()[1])
             ll.addLast(val)
+        elif "display" in q:
+            ll.display()
+        elif "size" in q:
+            print(ll.getSize())
+        
     
-    testList(ll)
-    
+
 driver()
+    
